@@ -15,6 +15,8 @@ const usuarios = require("./routes/usuario")
 const passport = require("passport")
 require("./config/auth")(passport)
 
+const db = require("./config/db")
+
 //config
     //sessão
         app.use(session({
@@ -44,7 +46,7 @@ require("./config/auth")(passport)
 
     //mongoose
         mongoose.Promise = global.Promise;
-        mongoose.connect("mongodb://localhost:27017/blognode", {
+        mongoose.connect(db.mongoURI, {
             useNewUrlParser: true
         }).then(function(){
             console.log("contectado ao Mongo")
@@ -119,7 +121,7 @@ require("./config/auth")(passport)
 
 
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, function(){
     console.log("SERVIDOR ATIVO")
 })
