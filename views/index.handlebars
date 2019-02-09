@@ -1,0 +1,32 @@
+
+{{#if user}}
+
+{{else}}
+    <div class="jumbotron">
+        <h1 class="display-6">Bem vindo ao Blog</h1>
+        <p class="lead">Este é um simples blog feito com Node, Express e MongoDB</p>
+        <hr class="my-4">
+        <p>Seu blog de informações sobre o mundo da TI</p>
+        <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
+        <hr>
+</div>
+{{/if}}
+
+
+
+<h3>Postagens Recentes: </h3>
+
+{{#each posts}}
+    <div class="card mt-4">
+    <div class="card-body">
+        <h3>{{titulo}}</h3>
+        <p>{{descricao}}</p>
+        <a href="/post/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data de publicação: {{data}}</small>
+    </div>
+</div>
+{{else}}
+    <h5>Nenhuma Postagem</h5>
+{{/each}}
